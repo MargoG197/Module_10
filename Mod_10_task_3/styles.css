@@ -1,0 +1,79 @@
+.btn {
+	padding: 0;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	-webkit-tap-highlight-color: transparent;
+	box-shadow: none;
+	cursor: pointer;
+	
+	margin: 5px 10px;
+	padding: 10px 15px;
+	border-radius: 1px;
+	font-size: 12px;
+	line-height: 15px;
+	text-transform: uppercase;
+	color: white;
+	background: #315efb;
+	transition: 0.3s;
+  }
+  
+  .btn:hover {
+	box-shadow: 0px 2px 8px 2px rgba(141,150,178,.3);
+	transform: scale(1.05);
+  }
+  
+  .input{
+	display:block;
+	margin: 20px 10px;
+	padding: 10px;
+	width: 200px;'
+	padding: 4px;
+  }
+  
+  .incert{
+	display: block;
+	border: solid 1px;
+	border-color: gray;
+	width: 400px;
+	min-height: 100px;
+	height: auto;  
+	margin: 20px 10px;
+	padding: 4px;
+  }
+  
+  .sendMessage{
+	position: relative;
+  }
+  
+  .getGeolocation{
+	position: absolute;
+  }
+  
+  .userMsg{
+	display: inline-block;
+	padding: 5px;
+	margin: 2px 5px 2px 200px;
+	border: solid #B727F1 2px;
+	border-radius: 4px;
+	background-color: #BCC1FC;
+  /*   color: white; */
+	max-width: 200px;
+	height: auto;
+	width: auto;
+	word-wrap: break-word; 
+  }
+  
+  
+  .serverMsg{
+	display: inline-block;
+	padding: 5px;
+	border: solid #315efb 2px;
+	border-radius: 4px;
+	color: white;
+	background: #315efb;
+	max-width: 180px;
+	height: auto;
+	width: auto;
+	word-wrap: break-word; 
+	}
