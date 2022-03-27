@@ -5,12 +5,19 @@ const sendMessageBtn = document.querySelector('.sendMessage');
 const GeoBtn = document.querySelector('.getGeolocation');
 const wssUrl = 'wss://echo-ws-service.herokuapp.com';
 
+// Создаем веб сокет
+let webSocket; 
+// Создаем переменную для данных о геолокации
+let geoMsg;
 
 // определяем геолокацию
 const success = (position) => {
 const longitude = position.coords.longitude;
 const latitude = position.coords.latitude;
-writeToScreen(`<span class='userMsg'>Ваше местоположение, широта: ${longitude}, долгота: ${latitude}.</span>`)   
+geoMsg = `Longitude: ${longitude}, Latitude: ${latitude}`; 
+  // отправляем данные на сервер и выводим ссылку на карту в чат.
+webSocket.send(geoMsg);
+writeToScreen(`<a href= 'https://www.openstreetmap.org/#map=18/${latitude}/${longitude}' class='userMsg'>Открыть карту с вашим местоположением</a>`)   
 }
 
 const error = () => {
@@ -37,8 +44,6 @@ function writeToScreen(message) {
   incertArea.appendChild(newLine);
 };
 
-// Создаем веб сокет
-let webSocket; 
 
 //Пишем функцию для установки соединения с это-сервером, функция будет начинать работать, при клике на поле input
 
@@ -51,9 +56,9 @@ input.addEventListener('click', () => {
   webSocket.onclose = function(event){
     console.log('disconnected');
   };
-  
+  //При получении ответа от сервера, если в ответе содаржатся данные с геолокацией, данные игнорируются, если данные с сообщением пользователя, то данные отправляются в чат.
   webSocket.onmessage = function(event){
-   writeToScreen(`<span class="serverMsg">Сервер: ${event.data}</span>`);
+   event.data === geoMsg ? () => {}: writeToScreen(`<span class="serverMsg">Сервер: ${event.data}</span>`);
     }
   });
 
